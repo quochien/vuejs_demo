@@ -1,0 +1,23 @@
+.container.container-margin
+  #new-team-form
+    .form-group
+      %label.form-label{ "for" => "name" }
+        Team Name
+      %input.form-control{ "id" => "name", "v-model" => "name" }
+      %p.validation-error
+        {{ errors }}
+    %div{ 'v-for' => "player in players" }
+      .form-group.player-form
+        %label.form-label{ "for" => "name"}
+          Player Name
+        %input.form-control{ "id" => "name", "v-model" => "player.name" }
+      .form-group.player-form
+        %label.form-label{ "for" => "position" }
+          Player Position
+        %input.form-control{ "id" => "position", "v-model" => "player.position" }
+    .form-group.add-player-btn
+      %button.btn.btn-info.btn-sm{ "v-on:click" => "addPlayer" }
+        Add Player
+    .form-group
+      %button.btn.btn-success{ "v-on:click" => "saveTeam(name)" }
+        Save Team
